@@ -1,0 +1,20 @@
+#!/bin/sh
+
+case $1 in
+    start)
+        echo "Starting ldd modules"
+        module_load faulty
+        modprobe hello
+        ;;
+    stop)
+        echo "Stopping ldd modules"
+        rmmod hello
+        module_unload faulty
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
