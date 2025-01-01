@@ -1,0 +1,30 @@
+From 3cc9de03cee5f2bd429063640b816c2ed7c755bb Mon Sep 17 00:00:00 2001
+From: Sergei Shirokov <sergej.shirokov@gmail.com>
+Date: Wed, 1 Jan 2025 16:13:01 +0200
+Subject: [PATCH] fix makefile
+
+---
+ Makefile | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7b08c49..319500b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,13 +1,5 @@
+-
+-SUBDIRS =  misc-progs misc-modules \
+-           skull scull scullc scullp lddbus sculld scullv shortprint simple tty \
+-	   pci usb\
+-	   sbull snull short
+-
+-all: subdirs
+-
+-subdirs:
+-	for n in $(SUBDIRS); do $(MAKE) -C $$n || exit 1; done
++all:
++	$(MAKE) -C misc-modules
+ 
+ clean:
+-	for n in $(SUBDIRS); do $(MAKE) -C $$n clean; done
++	$(MAKE) -C misc-modules clean
